@@ -16,7 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FleetFormation"></activity>
+        <activity android:name=".FleetFormation" />
+        <activity android:name=".FleetFormation2" />
+        <activity android:name=".BattleCamp1" />
+        <activity android:name=".BattleCamp2"></activity>
     </application>
 
 </manifest>

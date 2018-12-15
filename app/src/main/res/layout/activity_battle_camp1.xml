@@ -4,21 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FleetFormation">
+    tools:context=".BattleCamp1">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="183dp"
         android:layout_height="24dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="8dp"
-        android:text="Fleet Formation"
+        android:text="Battle Camp"
         android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,13 +26,12 @@
         android:layout_width="99dp"
         android:layout_height="20dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
         android:text="Player 1:"
         android:textAlignment="center"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -45,7 +43,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Place your ships"
+        android:text="Launch attack"
         app:layout_constraintBottom_toTopOf="@+id/gridLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.509"
@@ -53,88 +51,59 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         app:layout_constraintVertical_bias="0.101" />
 
-    <Button
-        android:id="@+id/autoFleetButton1"
-        android:layout_width="89dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:alpha="0.8"
-        android:background="@color/colorPrimary"
-        android:fadingEdge="horizontal|vertical"
-        android:onClick="autoFleetButton1Clicked"
-        android:text="auto"
-        android:textColor="?attr/colorBackgroundFloating"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/finishFleet1Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/finishFleet1Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="24dp"
-        android:background="@color/colorPrimary"
-        android:onClick="finishFleetButton1Clicked"
-        android:text="Continue"
-        android:textColor="?attr/colorBackgroundFloating"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <android.support.v7.widget.GridLayout
-        android:id="@+id/gridLayout1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/gridLayout"
+        android:layout_width="338dp"
+        android:layout_height="317dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="92dp"
         android:background="@drawable/fleet_formation_border"
         app:columnCount="10"
-        app:layout_constraintBottom_toTopOf="@+id/autoFleetButton1"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
         app:rowCount="10">
 
         <TextView
-            android:id="@+id/textView00"
+            android:id="@+id/textView11"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:background="@drawable/fleet_formation_border"
+            android:clickable="true"
             android:gravity="center_vertical|center_horizontal"
             android:minWidth="32dp"
             android:minHeight="32dp"
+            android:onClick="missileLaunched1"
+            android:soundEffectsEnabled="true"
+            android:tag="1,1,0"
+            android:text="1"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textSize="18sp"
             app:layout_column="0"
             app:layout_row="0" />
 
         <TextView
-            android:id="@+id/textView01"
+            android:id="@+id/textView12"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:background="@drawable/fleet_formation_border"
+            android:clickable="true"
             android:gravity="center_vertical|center_horizontal"
             android:minWidth="32dp"
             android:minHeight="32dp"
+            android:onClick="missileLaunched1"
+            android:soundEffectsEnabled="true"
+            android:tag="1,2,1"
+            android:text="2"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textSize="18sp"
             app:layout_column="1"
             app:layout_row="0" />
 
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:background="@drawable/fleet_formation_border"
-            android:gravity="center_vertical|center_horizontal"
-            android:minWidth="32dp"
-            android:minHeight="32dp"
-            app:layout_column="0"
-            app:layout_row="1" />
-
     </android.support.v7.widget.GridLayout>
+
 </android.support.constraint.ConstraintLayout>
