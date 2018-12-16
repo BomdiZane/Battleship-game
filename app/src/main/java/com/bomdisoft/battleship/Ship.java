@@ -2,7 +2,8 @@ package com.bomdisoft.battleship;
 
 class Ship {
 
-    private Coordinates location;
+    private Location location;
+    private Constants.Direction direction;
     private int size;
     private int hits;
     private boolean isSunk;
@@ -14,9 +15,17 @@ class Ship {
         this.isSunk = false;
     }
 
-    public Ship(Coordinates location, int size){
+    public Ship(Location location, int size){
         this.location = location;
         this.size = size;
+        this.hits = 0;
+        this.isSunk = false;
+    }
+
+    public Ship(Location location, Constants.Direction direction, int size){
+        this.location = location;
+        this.size = size;
+        this.direction = direction;
         this.hits = 0;
         this.isSunk = false;
     }
@@ -29,7 +38,7 @@ class Ship {
         return isSunk;
     }
 
-    public Coordinates getLocation() {
+    public Location getLocation() {
         return location;
     }
 
@@ -37,11 +46,19 @@ class Ship {
         return size;
     }
 
+    public Constants.Direction getDirection() {
+        return direction;
+    }
+
+    public void setDirection(Constants.Direction direction) {
+        this.direction = direction;
+    }
+
     public void setHits(int hits) {
         this.hits = hits;
     }
 
-    public void setLocation(Coordinates location) {
+    public void setLocation(Location location) {
         this.location = location;
     }
 

@@ -5,7 +5,7 @@ import android.support.v7.widget.GridLayout;
 import android.view.Gravity;
 import android.widget.TextView;
 
-class Helpers {
+class Helper {
 
     static Ship carrier;
     static Ship battleship;

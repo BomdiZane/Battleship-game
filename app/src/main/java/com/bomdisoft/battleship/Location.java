@@ -1,19 +1,13 @@
 package com.bomdisoft.battleship;
 
-class Coordinates {
+class Location {
 
     private int xCoordinate;
     private int yCoordinate;
-    private Constants.Direction direction;
 
-    public Coordinates(int xCoordinate, int yCoordinate, Constants.Direction direction){
+    public Location(int xCoordinate, int yCoordinate){
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
-        this.direction = direction;
-    }
-
-    public Constants.Direction getDirection() {
-        return direction;
     }
 
     public int getXCoordinate() {
@@ -22,10 +16,6 @@ class Coordinates {
 
     public int getYCoordinate() {
         return yCoordinate;
-    }
-
-    public void setDirection(Constants.Direction direction) {
-        this.direction = direction;
     }
 
     public void setXCoordinate(int xCoordinate) {

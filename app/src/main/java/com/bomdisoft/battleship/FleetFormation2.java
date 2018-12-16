@@ -35,7 +35,7 @@ public class FleetFormation2 extends AppCompatActivity {
     }
 
     void populateCamp(){
-        Helpers.prepareBattleGround(layout, this);
+        Helper.prepareBattleGround(layout, this);
     }
 
     @Override

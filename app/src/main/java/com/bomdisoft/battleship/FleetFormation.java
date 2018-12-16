@@ -36,7 +36,7 @@ public class FleetFormation extends AppCompatActivity {
     }
 
     void prepareBattleGround(){
-        Helpers.prepareBattleGround(layout, this);
+        Helper.prepareBattleGround(layout, this);
     }
 
     @Override
