@@ -1,12 +1,27 @@
 package com.bomdisoft.battleship;
 
 public class Constants {
-    public enum ShipTypes { CARRIER, BATTLESHIP, SUBMARINE, CRUISER, PATROL }
-    public enum Direction { NORTH, SOUTH }
+    public enum ShipType {
+        CARRIER(5), BATTLESHIP(4), SUBMARINE(3), CRUISER(2), PATROL(1);
+        private final int size;
+
+        ShipType(int size){
+            this.size = size;
+        }
+
+        public int getValue(){
+            return size;
+        }
+    }
+
+    public enum Direction { EAST, SOUTH }
     public enum Outcome { HIT, MISS }
     public enum Result { WIN, LOSE, IN_PLAY }
 
     public static final String DELIMITER = ",";
+    public static final String SHIP_COLOR = "#18a888";
+    public static final String HIT_COLOR = "crimson";
+    public static final String MISS_COLOR = "grey";
     public static final int NUM_ROWS = 10;
     public static final int NUM_COLUMNS = 10;
 }

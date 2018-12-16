@@ -8,23 +8,25 @@ class Ship {
     private int hits;
     private boolean isSunk;
 
-    public Ship(int size){
+    public Ship(Constants.ShipType shipType){
+        this.size = shipType.getValue();
         this.location = null;
-        this.size = size;
+        this.direction = null;
         this.hits = 0;
         this.isSunk = false;
     }
 
-    public Ship(Location location, int size){
+    public Ship(Location location, Constants.ShipType shipType){
+        this.size = shipType.getValue();
         this.location = location;
-        this.size = size;
+        this.direction = null;
         this.hits = 0;
         this.isSunk = false;
     }
 
-    public Ship(Location location, Constants.Direction direction, int size){
+    public Ship(Location location, Constants.Direction direction, Constants.ShipType shipType){
+        this.size = shipType.getValue();
         this.location = location;
-        this.size = size;
         this.direction = direction;
         this.hits = 0;
         this.isSunk = false;

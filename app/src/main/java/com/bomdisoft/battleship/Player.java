@@ -6,7 +6,7 @@ import java.util.LinkedHashMap;
 class Player {
 
     private String name;
-    private HashMap<Constants.ShipTypes, Ship> ships;
+    private HashMap<Constants.ShipType, Ship> ships;
     private LinkedHashMap<Location, Constants.Outcome> moves;
     private int score;
     private Constants.Result result;
@@ -14,16 +14,16 @@ class Player {
     // CONSTRUCTORS
     public Player(String name){
         this.name = name;
-        this.ships = null;
-        this.moves = null;
+        this.ships = new HashMap<>();
+        this.moves = new LinkedHashMap<>();
         this.score = 0;
         this.result = Constants.Result.IN_PLAY;
     }
 
-    public Player(String name, HashMap<Constants.ShipTypes, Ship> ships){
+    public Player(String name, HashMap<Constants.ShipType, Ship> ships){
         this.name = name;
         this.ships = ships;
-        this.moves = null;
+        this.moves = new LinkedHashMap<>();
         this.score = 0;
         this.result = Constants.Result.IN_PLAY;
     }
@@ -33,11 +33,11 @@ class Player {
         return name;
     }
 
-    public HashMap<Constants.ShipTypes, Ship> getShips() {
+    public HashMap<Constants.ShipType, Ship> getShips() {
         return ships;
     }
 
-    public Ship getShip(Constants.ShipTypes shipType) {
+    public Ship getShip(Constants.ShipType shipType) {
         return ships.get(shipType);
     }
 
@@ -66,7 +66,7 @@ class Player {
         this.result = result;
     }
 
-    public void addShip(Constants.ShipTypes shipType, Ship ship) {
+    public void addShip(Ship ship, Constants.ShipType shipType) {
         this.ships.put(shipType, ship);
     }
 

@@ -3,20 +3,39 @@ package com.bomdisoft.battleship;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayout;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class FleetFormation2Activity extends AppCompatActivity {
 
-    private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String TAG = FleetFormation2Activity.class.getSimpleName();
+    private GridLayout layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "onCreate");
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_fleet_formation2);
+
+        layout = findViewById(R.id.fleetFormationCamp1);
+        populateCamp();
+    }
+
+    public void autoFleetButton2Clicked(View view) {
+        populateCamp();
+    }
+
+    public void finishFleetButton2Clicked(View view) {
+        Log.d(TAG, "finishFleetButton2Clicked");
+
+        Intent intent = new Intent(this, BattleCamp1Activity.class);
+        startActivity(intent);
+    }
+
+    void populateCamp(){
+        Helper.prepareBattleGround(layout, this);
     }
 
     @Override
@@ -53,12 +72,5 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         Log.d(TAG, "onResume");
         super.onResume();
-    }
-
-    public void startButtonClicked(View view) {
-        Log.d(TAG, "startButtonClicked");
-
-        Intent intent = new Intent(this, FleetFormation.class);
-        startActivity(intent);
     }
 }

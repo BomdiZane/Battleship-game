@@ -6,19 +6,19 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-public class BattleCamp2 extends AppCompatActivity {
+public class BattleCamp1Activity extends AppCompatActivity {
 
-    private static final String TAG = BattleCamp1.class.getSimpleName();
+    private static final String TAG = BattleCamp1Activity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "onCreate");
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_battle_camp2);
+        setContentView(R.layout.activity_battle_camp1);
     }
 
-    public void missileLaunched2(View view) {
+    public void missileLaunched1(View view) {
         Log.d(TAG, "missileLaunched1");
 
         String[] tagValues = view.getTag().toString().split(Constants.DELIMITER);

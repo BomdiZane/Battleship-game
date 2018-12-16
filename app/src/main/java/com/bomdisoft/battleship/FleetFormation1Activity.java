@@ -7,10 +7,10 @@ import android.util.Log;
 import android.view.View;
 import android.support.v7.widget.GridLayout;
 
-public class FleetFormation extends AppCompatActivity {
+public class FleetFormation1Activity extends AppCompatActivity {
 
-    private static final String TAG = FleetFormation.class.getSimpleName();
-    private GridLayout layout;
+    private static final String TAG = FleetFormation1Activity.class.getSimpleName();
+    private Player player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,24 +19,23 @@ public class FleetFormation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fleet_formation);
 
-        layout = findViewById(R.id.fleetFormationCamp1);
-        prepareBattleGround();
+        Helper.prepareBattleGround((GridLayout) findViewById(R.id.fleetFormationCamp1), this);
 
+        player = new Player("Player 1");
+        Helper.buildShips(player);
+
+        Helper.deployShips(player, this);
     }
 
     public void autoFleetButton1Clicked(View view) {
-        prepareBattleGround();
+        Helper.deployShips(player, this);
     }
 
     public void finishFleetButton1Clicked(View view) {
         Log.d(TAG, "finishFleetButton1Clicked");
 
-        Intent intent = new Intent(this, FleetFormation2.class);
+        Intent intent = new Intent(this, FleetFormation2Activity.class);
         startActivity(intent);
-    }
-
-    void prepareBattleGround(){
-        Helper.prepareBattleGround(layout, this);
     }
 
     @Override
