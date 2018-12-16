@@ -8,8 +8,8 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="183dp"
-        android:layout_height="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
@@ -18,88 +18,38 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.437"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="99dp"
-        android:layout_height="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
-        android:text="Player 2:"
+        android:text="Player 2: Place your ships"
         android:textAlignment="center"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.442"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="17dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Place your ships"
-        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.032" />
-
-    <Button
-        android:id="@+id/autoFleetButton1"
-        android:layout_width="89dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:alpha="0.8"
-        android:background="@color/colorPrimary"
-        android:fadingEdge="horizontal|vertical"
-        android:onClick="autoFleetButton2Clicked"
-        android:text="auto"
-        android:textColor="?attr/colorBackgroundFloating"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/finishFleet1Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/finishFleet1Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="28dp"
-        android:background="@color/colorPrimary"
-        android:onClick="finishFleetButton2Clicked"
-        android:text="Continue"
-        android:textColor="?attr/colorBackgroundFloating"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <android.support.v7.widget.GridLayout
-        android:id="@+id/gridLayout"
+        android:id="@+id/fleetFormationCamp2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="148dp"
         android:background="@drawable/fleet_formation_border"
         app:columnCount="10"
-        app:layout_constraintBottom_toTopOf="@+id/autoFleetButton1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.462"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
         app:rowCount="10">
 
         <TextView
@@ -136,5 +86,43 @@
             app:layout_row="1" />
 
     </android.support.v7.widget.GridLayout>
+
+    <Button
+        android:id="@+id/autoFleetButton2"
+        android:layout_width="89dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="8dp"
+        android:alpha="0.8"
+        android:background="@color/colorPrimary"
+        android:fadingEdge="horizontal|vertical"
+        android:onClick="autoFleetButton2Clicked"
+        android:text="auto"
+        android:textColor="?attr/colorBackgroundFloating"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.137"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fleetFormationCamp2" />
+
+    <Button
+        android:id="@+id/finishFleet1Button"
+        android:layout_width="wrap_content"
+        android:layout_height="43dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorPrimary"
+        android:onClick="finishFleetButton2Clicked"
+        android:text="Continue"
+        android:textColor="?attr/colorBackgroundFloating"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.566"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/autoFleetButton2"
+        app:layout_constraintVertical_bias="0.161" />
 
 </android.support.constraint.ConstraintLayout>

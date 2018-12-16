@@ -4,18 +4,13 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.widget.GridLayout;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.support.v7.widget.GridLayout;
 
 public class FleetFormation extends AppCompatActivity {
 
     private static final String TAG = FleetFormation.class.getSimpleName();
-    private GridLayout battleCamp;
-    private TextView newLocation;
-    private GridLayout.LayoutParams glp;
+    private GridLayout layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +19,13 @@ public class FleetFormation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fleet_formation);
 
-//        populateCamp();
+        layout = findViewById(R.id.fleetFormationCamp1);
+        prepareBattleGround();
+
     }
 
     public void autoFleetButton1Clicked(View view) {
-
+        prepareBattleGround();
     }
 
     public void finishFleetButton1Clicked(View view) {
@@ -38,19 +35,8 @@ public class FleetFormation extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void populateCamp(){
-        glp = new GridLayout.LayoutParams(GridLayout.spec(5), GridLayout.spec(5));
-
-        newLocation = new TextView(FleetFormation.this);
-        newLocation.setMinWidth(32);
-        newLocation.setMinHeight(32);
-        newLocation.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL);
-        newLocation.setBackgroundResource(R.drawable.fleet_formation_border);
-        newLocation.setLayoutParams(glp);
-
-        battleCamp = findViewById(R.id.gridLayout1);
-        battleCamp.addView(newLocation);
-//        battleCamp.removeAllViewsInLayout();
+    void prepareBattleGround(){
+        Helpers.prepareBattleGround(layout, this);
     }
 
     @Override

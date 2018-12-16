@@ -21,8 +21,10 @@ public class BattleCamp1 extends AppCompatActivity {
     public void missileLaunched1(View view) {
         Log.d(TAG, "missileLaunched1");
 
-        String[] tagValues = view.getTag().toString().split(Constants.delimiter);
+        String[] tagValues = view.getTag().toString().split(Constants.DELIMITER);
         String toastMessage;
+
+        //@TODO
 
         try {
             toastMessage = "Row: " + tagValues[0] + ", Col: " + tagValues[1];

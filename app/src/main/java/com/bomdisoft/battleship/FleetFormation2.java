@@ -3,12 +3,14 @@ package com.bomdisoft.battleship;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayout;
 import android.util.Log;
 import android.view.View;
 
 public class FleetFormation2 extends AppCompatActivity {
 
     private static final String TAG = FleetFormation2.class.getSimpleName();
+    private GridLayout layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,10 +18,13 @@ public class FleetFormation2 extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fleet_formation2);
+
+        layout = findViewById(R.id.fleetFormationCamp1);
+        populateCamp();
     }
 
     public void autoFleetButton2Clicked(View view) {
-
+        populateCamp();
     }
 
     public void finishFleetButton2Clicked(View view) {
@@ -27,6 +32,10 @@ public class FleetFormation2 extends AppCompatActivity {
 
         Intent intent = new Intent(this, BattleCamp1.class);
         startActivity(intent);
+    }
+
+    void populateCamp(){
+        Helpers.prepareBattleGround(layout, this);
     }
 
     @Override
