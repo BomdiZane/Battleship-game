@@ -19,16 +19,20 @@ public class FleetFormation1Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fleet_formation);
 
+        gameSetup();
+    }
+
+    public void gameSetup(){
         Helper.prepareBattleGround((GridLayout) findViewById(R.id.fleetFormationCamp1), this);
 
         player = new Player("Player 1");
-        Helper.buildShips(player);
 
+        Helper.buildShips(player);
         Helper.deployShips(player, this);
     }
 
     public void autoFleetButton1Clicked(View view) {
-        Helper.deployShips(player, this);
+        gameSetup();
     }
 
     public void finishFleetButton1Clicked(View view) {

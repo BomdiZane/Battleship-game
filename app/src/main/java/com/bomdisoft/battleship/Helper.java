@@ -3,6 +3,7 @@ package com.bomdisoft.battleship;
 import android.app.Activity;
 import android.graphics.Color;
 import android.support.v7.widget.GridLayout;
+import android.util.Log;
 import android.view.Gravity;
 import android.widget.TextView;
 
@@ -60,17 +61,16 @@ class Helper {
         Collection<Ship> playerShips = player.getShips().values();
 
         for (Ship ship: playerShips) {
-            while (!isValidCoordinates(playerShips, xCoordinate, yCoordinate, direction)) {
-                xCoordinate = randomX.nextInt(Constants.NUM_COLUMNS + 1);
-                yCoordinate = randomY.nextInt(Constants.NUM_ROWS + 1);
-                direction = Constants.Direction.values()[randomDirection.nextInt(Constants.Direction.values().length + 1)];
+            while (!isValidCoordinates(ship, playerShips, xCoordinate, yCoordinate)) {
+                xCoordinate = randomX.nextInt(Constants.NUM_COLUMNS);
+                yCoordinate = randomY.nextInt(Constants.NUM_ROWS);
+                direction = Constants.Direction.values()[randomDirection.nextInt(Constants.Direction.values().length)];
             }
 
             ship.setLocation(new Location(xCoordinate, yCoordinate));
             ship.setDirection(direction);
 
-            TextView view = activity.findViewById(Integer.parseInt(xCoordinate + "" + yCoordinate));
-            view.setBackgroundColor(Color.parseColor(Constants.SHIP_COLOR));
+            positionShip(ship, activity);
         }
     }
 
@@ -78,13 +78,52 @@ class Helper {
         //@TODO set appropriate background based on state (hit, miss, open)
     }
 
-    private static boolean isValidCoordinates(Collection<Ship> playerShips, int xCoordinate, int yCoordinate, Constants.Direction direction){
+    private static boolean isValidCoordinates(Ship currentShip, Collection<Ship> playerShips, int xCoordinate, int yCoordinate){
+        for (Ship ship: playerShips) {
+            Constants.Direction shipDirection = ship.getDirection();
+            Location shipLocation = ship.getLocation();
 
+            if (shipDirection == null || shipLocation == null || ship == currentShip) continue;
+
+            int shipX = shipLocation.getXCoordinate();
+            int shipY = shipLocation.getYCoordinate();
+            int currentShipSize = currentShip.getSize();
+
+            switch (shipDirection){
+                case SOUTH:
+                    if (currentShipSize + yCoordinate > Constants.NUM_ROWS) return false;
+                default:
+                    if (currentShipSize + xCoordinate > Constants.NUM_COLUMNS) return false;
+            }
+
+            for (int i = 0; i < ship.getSize() && i < currentShip.getSize(); i++) {
+                if ((xCoordinate + i == shipX + i) || (yCoordinate + i == shipY + i)) return false;
+            }
+        }
 
         return true;
     }
 
-    private static void positionShip(Activity activity){
+    private static void positionShip(Ship ship, Activity activity){
+        int xCoordinate = ship.getLocation().getXCoordinate();
+        int yCoordinate = ship.getLocation().getYCoordinate();
+        int size = ship.getSize();
+        Constants.Direction direction = ship.getDirection();
+        TextView view;
 
+        switch (direction){
+            case EAST:
+                for (int i = 0; i < size; i++) {
+                    view = activity.findViewById(Integer.parseInt((xCoordinate + i) + "" + yCoordinate));
+                    view.setBackgroundColor(Color.parseColor(Constants.SHIP_COLOR));
+                }
+            break;
+            default:
+                for (int i = 0; i < size; i++) {
+                    view = activity.findViewById(Integer.parseInt(xCoordinate + "" + (yCoordinate + i)));
+                    view.setBackgroundColor(Color.parseColor(Constants.SHIP_COLOR));
+                }
+                break;
+        }
     }
 }
