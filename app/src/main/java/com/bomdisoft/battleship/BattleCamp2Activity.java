@@ -29,6 +29,8 @@ public class BattleCamp2Activity extends AppCompatActivity implements BattleLaun
     public void campSetup(){
         Helper.prepareBattleGround((GridLayout) findViewById(R.id.battleCamp2), this);
 
+        Player player2 = BattleshipMainActivity.getPlayer2();
+        Collection<Location> player2LaunchLocations = player2.getMoves().keySet();
         TextView view;
         String[] tagValues;
         for (int i = 0; i < Constants.NUM_ROWS; i++){
@@ -43,6 +45,13 @@ public class BattleCamp2Activity extends AppCompatActivity implements BattleLaun
                         launchMissile(location);
                     }
                 });
+
+                Location launchLocation = new Location(i, j);
+                if (player2LaunchLocations.contains(launchLocation)) {
+                    Constants.Outcome launchOutcome = player2.getMoves().get(launchLocation);
+                    if (launchOutcome == Constants.Outcome.HIT) view.setBackgroundColor(Color.parseColor(Constants.HIT_COLOR));
+                    else view.setText("x");
+                }
             }
         }
     }
