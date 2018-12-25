@@ -56,8 +56,8 @@ class Ship {
         this.direction = direction;
     }
 
-    public void setHits(int hits) {
-        this.hits = hits;
+    public void addHits() {
+        this.hits += 1;
     }
 
     public void setLocation(Location location) {
@@ -68,7 +68,7 @@ class Ship {
         this.size = size;
     }
 
-    public void setSunk(boolean sunk) {
-        this.isSunk = sunk;
+    public void setSunk() {
+        this.isSunk = true;
     }
 }

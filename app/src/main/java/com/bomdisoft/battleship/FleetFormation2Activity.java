@@ -22,13 +22,15 @@ public class FleetFormation2Activity extends AppCompatActivity {
         gameSetup();
     }
 
-    public void gameSetup(){
+    void gameSetup(){
         Helper.prepareBattleGround((GridLayout) findViewById(R.id.fleetFormationCamp2), this);
 
         player = new Player("Player 2");
 
         Helper.buildShips(player);
         Helper.deployShips(player, this);
+        BattleshipMainActivity.setPlayer2(player);
+        BattleshipMainActivity.setPlayer2Camp(this);
     }
 
     public void autoFleetButton2Clicked(View view) {

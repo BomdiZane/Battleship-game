@@ -1,5 +1,6 @@
 package com.bomdisoft.battleship;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,42 @@ import android.view.View;
 public class BattleshipMainActivity extends AppCompatActivity {
 
     private static final String TAG = BattleshipMainActivity.class.getSimpleName();
+    private static Player player1;
+    private static Player player2;
+    private static Activity player1Camp;
+    private static Activity player2Camp;
+
+    public static void setPlayer1(Player player1) {
+        BattleshipMainActivity.player1 = player1;
+    }
+
+    public static void setPlayer2(Player player2) {
+        BattleshipMainActivity.player2 = player2;
+    }
+
+    public static Player getPlayer1() {
+        return player1;
+    }
+
+    public static Player getPlayer2() {
+        return player2;
+    }
+
+    public static void setPlayer1Camp(Activity player1Camp) {
+        BattleshipMainActivity.player1Camp = player1Camp;
+    }
+
+    public static void setPlayer2Camp(Activity player2Camp) {
+        BattleshipMainActivity.player2Camp = player2Camp;
+    }
+
+    public static Activity getPlayer1Camp() {
+        return player1Camp;
+    }
+
+    public static Activity getPlayer2Camp() {
+        return player2Camp;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

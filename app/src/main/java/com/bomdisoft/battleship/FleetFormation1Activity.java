@@ -29,6 +29,8 @@ public class FleetFormation1Activity extends AppCompatActivity {
 
         Helper.buildShips(player);
         Helper.deployShips(player, this);
+        BattleshipMainActivity.setPlayer1(player);
+        BattleshipMainActivity.setPlayer1Camp(this);
     }
 
     public void autoFleetButton1Clicked(View view) {

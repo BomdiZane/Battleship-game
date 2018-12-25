@@ -20,8 +20,8 @@ public class Constants {
 
     public static final String DELIMITER = ",";
     public static final String SHIP_COLOR = "#18a888";
-    public static final String HIT_COLOR = "crimson";
-    public static final String MISS_COLOR = "grey";
+    public static final String HIT_COLOR = "#db3236";
+    public static final String MISS_COLOR = "#D3D3D3";
     public static final int NUM_ROWS = 10;
     public static final int NUM_COLUMNS = 10;
 }

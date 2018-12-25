@@ -104,7 +104,7 @@ class Helper {
         return true;
     }
 
-    private static void positionShip(Ship ship, Activity activity){
+    static void positionShip(Ship ship, Activity activity){
         int xCoordinate = ship.getLocation().getXCoordinate();
         int yCoordinate = ship.getLocation().getYCoordinate();
         int size = ship.getSize();

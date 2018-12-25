@@ -58,7 +58,7 @@ class Player {
         this.name = name;
     }
 
-    public void addScore(int score) {
+    public void addScore() {
         this.score += 1;
     }
 
