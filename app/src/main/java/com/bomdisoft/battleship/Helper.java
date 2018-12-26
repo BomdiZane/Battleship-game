@@ -52,12 +52,12 @@ class Helper {
     }
 
     static void deployShips(Player player, Activity activity){
-        int xCoordinate = 0;
-        int yCoordinate = 0;
         Random randomX = new Random();
         Random randomY = new Random();
         Random randomDirection = new Random();
-        Constants.Direction direction = Constants.Direction.SOUTH;
+        int xCoordinate = 0;
+        int yCoordinate = 0;
+        Constants.Direction direction = Constants.Direction.values()[randomDirection.nextInt(Constants.Direction.values().length)];
         Collection<Ship> playerShips = player.getShips().values();
 
         for (Ship ship: playerShips) {
@@ -96,6 +96,8 @@ class Helper {
                     if (currentShipSize + xCoordinate > Constants.NUM_COLUMNS) return false;
             }
 
+
+            // @TODO FIX BUG HERE !!!!!
             for (int i = 0; i < ship.getSize() && i < currentShip.getSize(); i++) {
                 if ((xCoordinate + i == shipX + i) || (yCoordinate + i == shipY + i)) return false;
             }
