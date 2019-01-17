@@ -8,6 +8,7 @@ import android.view.Gravity;
 import android.widget.TextView;
 
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.Random;
 
 class Helper {
@@ -55,13 +56,17 @@ class Helper {
         Random randomX = new Random();
         Random randomY = new Random();
         Random randomDirection = new Random();
-        int xCoordinate = 0;
-        int yCoordinate = 0;
-        Constants.Direction direction = Constants.Direction.values()[randomDirection.nextInt(Constants.Direction.values().length)];
+        int xCoordinate;
+        int yCoordinate;
+        Constants.Direction direction;
         Collection<Ship> playerShips = player.getShips().values();
 
         for (Ship ship: playerShips) {
-            while (!isValidCoordinates(ship, playerShips, xCoordinate, yCoordinate)) {
+            xCoordinate = randomX.nextInt(Constants.NUM_COLUMNS);
+            yCoordinate = randomY.nextInt(Constants.NUM_ROWS);
+            direction = Constants.Direction.values()[randomDirection.nextInt(Constants.Direction.values().length)];
+
+            while (!isValidCoordinates(ship, playerShips, xCoordinate, yCoordinate, direction)) {
                 xCoordinate = randomX.nextInt(Constants.NUM_COLUMNS);
                 yCoordinate = randomY.nextInt(Constants.NUM_ROWS);
                 direction = Constants.Direction.values()[randomDirection.nextInt(Constants.Direction.values().length)];
@@ -74,58 +79,77 @@ class Helper {
         }
     }
 
-    static void updateBattle(){
-        //@TODO set appropriate background based on state (hit, miss, open)
-    }
+    private static boolean isValidCoordinates(Ship currentShip, Collection<Ship> playerShips, int xCoordinate, int yCoordinate, Constants.Direction direction){
+        LinkedList<String> currentCoordinates = new LinkedList<>();
+        int currentShipSize = currentShip.getSize();
 
-    private static boolean isValidCoordinates(Ship currentShip, Collection<Ship> playerShips, int xCoordinate, int yCoordinate){
+        if (direction == Constants.Direction.SOUTH
+                && currentShipSize + yCoordinate >= Constants.NUM_ROWS) return false;
+        if (direction == Constants.Direction.EAST
+                && currentShipSize + xCoordinate >= Constants.NUM_COLUMNS) return false;
+
         for (Ship ship: playerShips) {
             Constants.Direction shipDirection = ship.getDirection();
             Location shipLocation = ship.getLocation();
 
             if (shipDirection == null || shipLocation == null || ship == currentShip) continue;
 
+            int shipSize = ship.getSize();
             int shipX = shipLocation.getXCoordinate();
             int shipY = shipLocation.getYCoordinate();
-            int currentShipSize = currentShip.getSize();
 
             switch (shipDirection){
                 case SOUTH:
-                    if (currentShipSize + yCoordinate > Constants.NUM_ROWS) return false;
-                default:
-                    if (currentShipSize + xCoordinate > Constants.NUM_COLUMNS) return false;
+                    for (int i = 0; i < shipSize; i++) currentCoordinates.add(shipX + "" + (shipY + i));
+                    break;
+                case EAST:
+                    for (int i = 0; i < shipSize; i++) currentCoordinates.add((shipX + i) + "" + shipY);
+                    break;
+                default: Log.d("Helper: ", "Invalid direction in ship"); break;
             }
+        }
 
-
-            // @TODO FIX BUG HERE !!!!!
-            for (int i = 0; i < ship.getSize() && i < currentShip.getSize(); i++) {
-                if ((xCoordinate + i == shipX + i) || (yCoordinate + i == shipY + i)) return false;
-            }
+        switch (direction){
+            case SOUTH:
+                for (int i = 0; i < currentShipSize; i++) {
+                    if (currentCoordinates.contains(xCoordinate + "" + (yCoordinate + i))) return  false;
+                }
+                break;
+            case EAST:
+                for (int i = 0; i < currentShipSize; i++) {
+                    if (currentCoordinates.contains((xCoordinate + i) + "" + yCoordinate)) return  false;
+                }
+                break;
+            default: Log.d("Helper: ", "Invalid direction in current ship"); break;
         }
 
         return true;
     }
 
-    static void positionShip(Ship ship, Activity activity){
+    private static void positionShip(Ship ship, Activity activity){
         int xCoordinate = ship.getLocation().getXCoordinate();
         int yCoordinate = ship.getLocation().getYCoordinate();
         int size = ship.getSize();
+        String shipColor = ship.getColor();
         Constants.Direction direction = ship.getDirection();
         TextView view;
 
         switch (direction){
+            case SOUTH:
+                for (int i = 0; i < size; i++) {
+                    view = activity.findViewById(Integer.parseInt(xCoordinate + "" + (yCoordinate + i)));
+                    if (view != null) view.setBackgroundColor(Color.parseColor(shipColor));
+                    else Log.d("Helper: ", "No view found for: " + Integer.parseInt(xCoordinate + "" + (yCoordinate + i)));
+                }
+                break;
             case EAST:
                 for (int i = 0; i < size; i++) {
                     view = activity.findViewById(Integer.parseInt((xCoordinate + i) + "" + yCoordinate));
-                    view.setBackgroundColor(Color.parseColor(Constants.SHIP_COLOR));
-                }
-            break;
-            default:
-                for (int i = 0; i < size; i++) {
-                    view = activity.findViewById(Integer.parseInt(xCoordinate + "" + (yCoordinate + i)));
-                    view.setBackgroundColor(Color.parseColor(Constants.SHIP_COLOR));
+                    if (view != null) view.setBackgroundColor(Color.parseColor(shipColor));
+                    else Log.d("Helper: ", "No view found for: " + Integer.parseInt((xCoordinate + i) + "" + yCoordinate));
                 }
                 break;
+            default: break;
         }
     }
 }

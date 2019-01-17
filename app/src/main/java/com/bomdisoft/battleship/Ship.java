@@ -5,6 +5,7 @@ class Ship {
     private Location location;
     private Constants.Direction direction;
     private int size;
+    private String color;
     private int hits;
     private boolean isSunk;
 
@@ -14,22 +15,22 @@ class Ship {
         this.direction = null;
         this.hits = 0;
         this.isSunk = false;
+        setColor(shipType);
     }
 
-    public Ship(Location location, Constants.ShipType shipType){
-        this.size = shipType.getValue();
-        this.location = location;
-        this.direction = null;
-        this.hits = 0;
-        this.isSunk = false;
+    public void setColor(Constants.ShipType shipType) {
+        switch (shipType){
+            case PATROL: this.color = Constants.PATROL_COLOR; break;
+            case CARRIER: this.color = Constants.CARRIER_COLOR; break;
+            case CRUISER: this.color = Constants.CRUISER_COLOR; break;
+            case BATTLESHIP: this.color = Constants.BATTLESHIP_COLOR; break;
+            case SUBMARINE: this.color = Constants.SUBMARINE_COLOR; break;
+            default: break;
+        }
     }
 
-    public Ship(Location location, Constants.Direction direction, Constants.ShipType shipType){
-        this.size = shipType.getValue();
-        this.location = location;
-        this.direction = direction;
-        this.hits = 0;
-        this.isSunk = false;
+    public String getColor() {
+        return color;
     }
 
     public int getHits() {
