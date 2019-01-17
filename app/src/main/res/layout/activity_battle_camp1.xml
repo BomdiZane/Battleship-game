@@ -1,74 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView01"
+    android:fillViewport="true"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".BattleCamp1Activity">
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:text="Battle Camp"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
-        android:text="Player 1: Launch attack"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <android.support.v7.widget.GridLayout
-        android:id="@+id/battleCamp1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/fleet_formation_border"
-        app:columnCount="10"
-        app:rowCount="10"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" >
+    android:layout_height="match_parent" >
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".BattleCamp1Activity">
 
         <TextView
-            android:id="@+id/textView11"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:background="@drawable/fleet_formation_border"
-            android:clickable="true"
-            android:gravity="center_vertical|center_horizontal"
-            android:minWidth="32dp"
-            android:minHeight="32dp"
-            android:soundEffectsEnabled="true"
-            android:tag="1,1,0"
-            android:text="1"
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="Battle Camp"
             android:textAlignment="center"
-            android:textAllCaps="true"
             android:textSize="18sp"
-            app:layout_column="0"
-            app:layout_row="0" />
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </android.support.v7.widget.GridLayout>
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="8dp"
+            android:text="Player 1: Launch attack"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-</android.support.constraint.ConstraintLayout>
+        <android.support.v7.widget.GridLayout
+            android:id="@+id/battleCamp1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/fleet_formation_border"
+            app:columnCount="10"
+            app:rowCount="10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" >
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@drawable/fleet_formation_border"
+                android:clickable="true"
+                android:gravity="center_vertical|center_horizontal"
+                android:minWidth="32dp"
+                android:minHeight="32dp"
+                android:soundEffectsEnabled="true"
+                android:tag="1,1,0"
+                android:text="1"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textSize="18sp"
+                app:layout_column="0"
+                app:layout_row="0" />
+
+        </android.support.v7.widget.GridLayout>
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

@@ -125,13 +125,9 @@ public class BattleCamp2Activity extends AppCompatActivity implements BattleLaun
             }
 
             if (gameOver){
-                Toast.makeText(this, "Game Over!", Toast.LENGTH_SHORT).show();
-
                 player2.setResult(Constants.Result.WIN);
-                Intent intent = new Intent(this, BattleshipMainActivity.class);
+                Intent intent = new Intent(this, GameOver.class);
                 startActivity(intent);
-
-                Toast.makeText(this, "Player 2 WON!", Toast.LENGTH_SHORT).show();
             }
         }
         else{

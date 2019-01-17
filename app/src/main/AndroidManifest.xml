@@ -19,7 +19,8 @@
         <activity android:name=".FleetFormation1Activity" />
         <activity android:name=".FleetFormation2Activity" />
         <activity android:name=".BattleCamp1Activity" />
-        <activity android:name=".BattleCamp2Activity"></activity>
+        <activity android:name=".BattleCamp2Activity" />
+        <activity android:name=".GameOver"></activity>
     </application>
 
 </manifest>
