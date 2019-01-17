@@ -7,6 +7,8 @@ import android.support.v7.widget.GridLayout;
 import android.util.Log;
 import android.view.View;
 
+import java.util.Collection;
+
 public class FleetFormation2Activity extends AppCompatActivity {
 
     private static final String TAG = FleetFormation2Activity.class.getSimpleName();
@@ -19,7 +21,15 @@ public class FleetFormation2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fleet_formation2);
 
-        gameSetup();
+        player = BattleshipMainActivity.getPlayer2();
+
+        if (player != null) {
+            Helper.prepareBattleGround((GridLayout) findViewById(R.id.fleetFormationCamp2), this);
+
+            Collection<Ship> playerShips = player.getShips().values();
+            for (Ship ship: playerShips) Helper.positionShip(ship, this);
+        }
+        else gameSetup();
     }
 
     void gameSetup(){

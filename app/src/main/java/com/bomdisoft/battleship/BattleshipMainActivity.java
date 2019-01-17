@@ -10,8 +10,8 @@ import android.view.View;
 public class BattleshipMainActivity extends AppCompatActivity {
 
     private static final String TAG = BattleshipMainActivity.class.getSimpleName();
-    private static Player player1;
-    private static Player player2;
+    private static Player player1 = null;
+    private static Player player2 = null;
     private static Activity player1Camp;
     private static Activity player2Camp;
 
